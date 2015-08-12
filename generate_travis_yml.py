@@ -5,7 +5,9 @@ sudo: false
 services:
   - mongodb
 
-{matrix}
+{python}
+
+{env}
 
 before_install:
   - wget http://repo.continuum.io/miniconda/Miniconda3-3.5.5-Linux-x86_64.sh -O miniconda.sh
@@ -52,9 +54,9 @@ after_success:
   coveralls
   codecov
 '''
+python_versions = ['2.7', '3.4']
 
 versioned_libraries = [
-    ('python', ['2.7', '3.4']),
     ('bluesky', ['v0.1.0', 'master']),
     ('dataportal', ['v0.1.0', 'master']),
     ('filestore', ['v0.1.0', 'master']),
@@ -89,15 +91,17 @@ def nest_all_the_loops(iterable, matrix=None, matrices=None):
     return matrices
 
 def generate():
-    matrices = nest_all_the_loops(versioned_libraries.copy())
-    formatted_matrix_entries = []
-    for mat in matrices:
+    python = ['  - %s' % pyver for pyver in python_versions]
+    python = '\n'.join(python)
+    python = 'python:\n' + python
+    envs = nest_all_the_loops(versioned_libraries.copy())
+    env = []
+    for mat in envs:
         repos = ' '.join(['%s={%s}' % (k.upper(), k) for k, v in mat.items() if k != 'python'])
-        formatted_matrix_entries.append(
-            ('    - python: {python}\n      env: %s' % repos).format(**mat))
+        env.append(('  - %s' % repos).format(**mat))
 
-    matrix_entries = '\n'.join(formatted_matrix_entries)
-    matrix = 'matrix:\n  -include:\n' + matrix_entries
+    env = '\n'.join(env)
+    env = 'env:\n' + env
     script = ['  - python %s/run_tests.py' % lib[0] for
               lib in versioned_libraries if lib[0] not in ['python', 'skxray']]
     script.append('  - python scikit-xray/run_tests.py')
@@ -116,7 +120,8 @@ def generate():
                                        url=repo_mapping['scikit-xray'],
                                        version='SKXRAY'))
     clone = '\n'.join(clone)
-    yml_file = travis_template.format(matrix=matrix, script=script, clone=clone)
+    yml_file = travis_template.format(env=env, script=script,
+                                      clone=clone, python=python)
     with open('.travis.yml', 'w') as f:
         f.write(yml_file)
 

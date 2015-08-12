@@ -5,72 +5,27 @@ sudo: false
 services:
   - mongodb
 
-matrix:
-  -include:
-    - python: 2.7
-      env: REPLAY=master METADATASTORE=v0.1.0 DATAPORTAL=v0.1.0 FILESTORE=v0.1.0 SUITCASE=master BLUESKY=v0.1.0 SKXRAY=master
-    - python: 2.7
-      env: REPLAY=master METADATASTORE=master DATAPORTAL=v0.1.0 FILESTORE=v0.1.0 SUITCASE=master BLUESKY=v0.1.0 SKXRAY=master
-    - python: 2.7
-      env: REPLAY=master METADATASTORE=v0.1.0 DATAPORTAL=v0.1.0 FILESTORE=master SUITCASE=master BLUESKY=v0.1.0 SKXRAY=master
-    - python: 2.7
-      env: REPLAY=master METADATASTORE=master DATAPORTAL=v0.1.0 FILESTORE=master SUITCASE=master BLUESKY=v0.1.0 SKXRAY=master
-    - python: 2.7
-      env: REPLAY=master METADATASTORE=v0.1.0 DATAPORTAL=master FILESTORE=v0.1.0 SUITCASE=master BLUESKY=v0.1.0 SKXRAY=master
-    - python: 2.7
-      env: REPLAY=master METADATASTORE=master DATAPORTAL=master FILESTORE=v0.1.0 SUITCASE=master BLUESKY=v0.1.0 SKXRAY=master
-    - python: 2.7
-      env: REPLAY=master METADATASTORE=v0.1.0 DATAPORTAL=master FILESTORE=master SUITCASE=master BLUESKY=v0.1.0 SKXRAY=master
-    - python: 2.7
-      env: REPLAY=master METADATASTORE=master DATAPORTAL=master FILESTORE=master SUITCASE=master BLUESKY=v0.1.0 SKXRAY=master
-    - python: 2.7
-      env: REPLAY=master METADATASTORE=v0.1.0 DATAPORTAL=v0.1.0 FILESTORE=v0.1.0 SUITCASE=master BLUESKY=master SKXRAY=master
-    - python: 2.7
-      env: REPLAY=master METADATASTORE=master DATAPORTAL=v0.1.0 FILESTORE=v0.1.0 SUITCASE=master BLUESKY=master SKXRAY=master
-    - python: 2.7
-      env: REPLAY=master METADATASTORE=v0.1.0 DATAPORTAL=v0.1.0 FILESTORE=master SUITCASE=master BLUESKY=master SKXRAY=master
-    - python: 2.7
-      env: REPLAY=master METADATASTORE=master DATAPORTAL=v0.1.0 FILESTORE=master SUITCASE=master BLUESKY=master SKXRAY=master
-    - python: 2.7
-      env: REPLAY=master METADATASTORE=v0.1.0 DATAPORTAL=master FILESTORE=v0.1.0 SUITCASE=master BLUESKY=master SKXRAY=master
-    - python: 2.7
-      env: REPLAY=master METADATASTORE=master DATAPORTAL=master FILESTORE=v0.1.0 SUITCASE=master BLUESKY=master SKXRAY=master
-    - python: 2.7
-      env: REPLAY=master METADATASTORE=v0.1.0 DATAPORTAL=master FILESTORE=master SUITCASE=master BLUESKY=master SKXRAY=master
-    - python: 2.7
-      env: REPLAY=master METADATASTORE=master DATAPORTAL=master FILESTORE=master SUITCASE=master BLUESKY=master SKXRAY=master
-    - python: 3.4
-      env: REPLAY=master METADATASTORE=v0.1.0 DATAPORTAL=v0.1.0 FILESTORE=v0.1.0 SUITCASE=master BLUESKY=v0.1.0 SKXRAY=master
-    - python: 3.4
-      env: REPLAY=master METADATASTORE=master DATAPORTAL=v0.1.0 FILESTORE=v0.1.0 SUITCASE=master BLUESKY=v0.1.0 SKXRAY=master
-    - python: 3.4
-      env: REPLAY=master METADATASTORE=v0.1.0 DATAPORTAL=v0.1.0 FILESTORE=master SUITCASE=master BLUESKY=v0.1.0 SKXRAY=master
-    - python: 3.4
-      env: REPLAY=master METADATASTORE=master DATAPORTAL=v0.1.0 FILESTORE=master SUITCASE=master BLUESKY=v0.1.0 SKXRAY=master
-    - python: 3.4
-      env: REPLAY=master METADATASTORE=v0.1.0 DATAPORTAL=master FILESTORE=v0.1.0 SUITCASE=master BLUESKY=v0.1.0 SKXRAY=master
-    - python: 3.4
-      env: REPLAY=master METADATASTORE=master DATAPORTAL=master FILESTORE=v0.1.0 SUITCASE=master BLUESKY=v0.1.0 SKXRAY=master
-    - python: 3.4
-      env: REPLAY=master METADATASTORE=v0.1.0 DATAPORTAL=master FILESTORE=master SUITCASE=master BLUESKY=v0.1.0 SKXRAY=master
-    - python: 3.4
-      env: REPLAY=master METADATASTORE=master DATAPORTAL=master FILESTORE=master SUITCASE=master BLUESKY=v0.1.0 SKXRAY=master
-    - python: 3.4
-      env: REPLAY=master METADATASTORE=v0.1.0 DATAPORTAL=v0.1.0 FILESTORE=v0.1.0 SUITCASE=master BLUESKY=master SKXRAY=master
-    - python: 3.4
-      env: REPLAY=master METADATASTORE=master DATAPORTAL=v0.1.0 FILESTORE=v0.1.0 SUITCASE=master BLUESKY=master SKXRAY=master
-    - python: 3.4
-      env: REPLAY=master METADATASTORE=v0.1.0 DATAPORTAL=v0.1.0 FILESTORE=master SUITCASE=master BLUESKY=master SKXRAY=master
-    - python: 3.4
-      env: REPLAY=master METADATASTORE=master DATAPORTAL=v0.1.0 FILESTORE=master SUITCASE=master BLUESKY=master SKXRAY=master
-    - python: 3.4
-      env: REPLAY=master METADATASTORE=v0.1.0 DATAPORTAL=master FILESTORE=v0.1.0 SUITCASE=master BLUESKY=master SKXRAY=master
-    - python: 3.4
-      env: REPLAY=master METADATASTORE=master DATAPORTAL=master FILESTORE=v0.1.0 SUITCASE=master BLUESKY=master SKXRAY=master
-    - python: 3.4
-      env: REPLAY=master METADATASTORE=v0.1.0 DATAPORTAL=master FILESTORE=master SUITCASE=master BLUESKY=master SKXRAY=master
-    - python: 3.4
-      env: REPLAY=master METADATASTORE=master DATAPORTAL=master FILESTORE=master SUITCASE=master BLUESKY=master SKXRAY=master
+python:
+  - 2.7
+  - 3.4
+
+env:
+  - SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0 FILESTORE=v0.1.0 METADATASTORE=v0.1.0 BLUESKY=v0.1.0
+  - SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0 FILESTORE=v0.1.0 METADATASTORE=master BLUESKY=v0.1.0
+  - SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0 FILESTORE=master METADATASTORE=v0.1.0 BLUESKY=v0.1.0
+  - SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0 FILESTORE=master METADATASTORE=master BLUESKY=v0.1.0
+  - SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=master FILESTORE=v0.1.0 METADATASTORE=v0.1.0 BLUESKY=v0.1.0
+  - SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=master FILESTORE=v0.1.0 METADATASTORE=master BLUESKY=v0.1.0
+  - SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=master FILESTORE=master METADATASTORE=v0.1.0 BLUESKY=v0.1.0
+  - SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=master FILESTORE=master METADATASTORE=master BLUESKY=v0.1.0
+  - SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0 FILESTORE=v0.1.0 METADATASTORE=v0.1.0 BLUESKY=master
+  - SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0 FILESTORE=v0.1.0 METADATASTORE=master BLUESKY=master
+  - SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0 FILESTORE=master METADATASTORE=v0.1.0 BLUESKY=master
+  - SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0 FILESTORE=master METADATASTORE=master BLUESKY=master
+  - SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=master FILESTORE=v0.1.0 METADATASTORE=v0.1.0 BLUESKY=master
+  - SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=master FILESTORE=v0.1.0 METADATASTORE=master BLUESKY=master
+  - SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=master FILESTORE=master METADATASTORE=v0.1.0 BLUESKY=master
+  - SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=master FILESTORE=master METADATASTORE=master BLUESKY=master
 
 before_install:
   - wget http://repo.continuum.io/miniconda/Miniconda3-3.5.5-Linux-x86_64.sh -O miniconda.sh
@@ -111,14 +66,9 @@ install:
   - git checkout $REPLAY
   - python setup.py develop
   - cd ..
-  - git clone https://github.com/NSLS-II/filestore
-  - cd filestore
-  - git checkout $FILESTORE
-  - python setup.py develop
-  - cd ..
-  - git clone https://github.com/NSLS-II/bluesky
-  - cd bluesky
-  - git checkout $BLUESKY
+  - git clone https://github.com/NSLS-II/suitcase
+  - cd suitcase
+  - git checkout $SUITCASE
   - python setup.py develop
   - cd ..
   - git clone https://github.com/NSLS-II/dataportal
@@ -126,14 +76,19 @@ install:
   - git checkout $DATAPORTAL
   - python setup.py develop
   - cd ..
-  - git clone https://github.com/NSLS-II/suitcase
-  - cd suitcase
-  - git checkout $SUITCASE
+  - git clone https://github.com/NSLS-II/filestore
+  - cd filestore
+  - git checkout $FILESTORE
   - python setup.py develop
   - cd ..
   - git clone https://github.com/NSLS-II/metadatastore
   - cd metadatastore
   - git checkout $METADATASTORE
+  - python setup.py develop
+  - cd ..
+  - git clone https://github.com/NSLS-II/bluesky
+  - cd bluesky
+  - git checkout $BLUESKY
   - python setup.py develop
   - cd ..
   - git clone https://github.com/scikit-xray/scikit-xray
