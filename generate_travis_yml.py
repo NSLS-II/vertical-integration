@@ -45,7 +45,6 @@ install:
   - 'pip install boltons'
 {clone}
   - 'pip install https://github.com/NSLS-II/channelarchiver/zipball/master#egg=channelarchiver'
-  - python setup.py install
 
 script:
 {script}
