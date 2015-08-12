@@ -33,13 +33,11 @@ before_install:
 install:
   - export GIT_FULL_HASH=`git rev-parse HEAD`
   - conda update conda --yes
-  - conda create -n testenv --yes pip nose python=$TRAVIS_PYTHON_VERSION pymongo six pyyaml numpy pandas scikit-image h5py matplotlib coverage jsonschema
+  - conda create -n testenv --yes pip nose python=$TRAVIS_PYTHON_VERSION pymongo six pyyaml numpy pandas scikit-image h5py matplotlib jsonschema
   # Dependencies not in official conda have been uploaded to binstar orgs.
   - conda install -n testenv --yes -c soft-matter pims tifffile
   - conda install -n testenv --yes -c nikea mongoengine
   - source activate testenv
-  - 'pip install coveralls'
-  - pip install codecov
   - 'pip install prettytable'
   - 'pip install humanize'
   - 'pip install boltons'
@@ -48,10 +46,6 @@ install:
 
 script:
 {script}
-
-after_success:
-  coveralls
-  codecov
 '''
 python_versions = ['2.7', '3.4']
 
@@ -102,7 +96,12 @@ def generate():
     env = '\n'.join(env)
     env = 'env:\n' + env
     script = ['  - python %s/run_tests.py' % lib[0] for
-              lib in versioned_libraries if lib[0] not in ['python', 'skxray']]
+              lib in versioned_libraries if lib[0] not in ['python', 'skxray', 'bluesky']]
+    script.append(
+        '  - if [ $TRAVIS_PYTHON_VERSION == "3.4" ]; then\n'
+        '      python bluesky/run_tests.py;'
+        '    fi;'
+    )
     script.append('  - python scikit-xray/run_tests.py')
     script = '\n'.join(script)
     clone_template = (
