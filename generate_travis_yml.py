@@ -52,7 +52,7 @@ install:
   - if [ $TRAVIS_PYTHON_VERSION == "3.4" ]; then\n
         conda install --yes -c lightsource2 super_state_machine;
     fi;
-  - cd ..
+g  - cd ..
   ###### start programmatically generated repo clone/install ######
 {clone}
   ###### stop programmatically generated repo clone/install ######

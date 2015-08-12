@@ -13,22 +13,22 @@ python:
 
 ##### start programmatically generated env section #####
 env:
-  - SKXRAY=master SUITCASE=master FILESTORE=v0.1.0 BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=v0.1.0 METADATASTORE=v0.1.0
-  - SKXRAY=master SUITCASE=master FILESTORE=v0.1.0 BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=v0.1.0 METADATASTORE=master
-  - SKXRAY=master SUITCASE=master FILESTORE=master BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=v0.1.0 METADATASTORE=v0.1.0
-  - SKXRAY=master SUITCASE=master FILESTORE=master BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=v0.1.0 METADATASTORE=master
-  - SKXRAY=master SUITCASE=master FILESTORE=v0.1.0 BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=master METADATASTORE=v0.1.0
-  - SKXRAY=master SUITCASE=master FILESTORE=v0.1.0 BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=master METADATASTORE=master
-  - SKXRAY=master SUITCASE=master FILESTORE=master BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=master METADATASTORE=v0.1.0
-  - SKXRAY=master SUITCASE=master FILESTORE=master BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=master METADATASTORE=master
-  - SKXRAY=master SUITCASE=master FILESTORE=v0.1.0 BLUESKY=master REPLAY=master DATAPORTAL=v0.1.0 METADATASTORE=v0.1.0
-  - SKXRAY=master SUITCASE=master FILESTORE=v0.1.0 BLUESKY=master REPLAY=master DATAPORTAL=v0.1.0 METADATASTORE=master
-  - SKXRAY=master SUITCASE=master FILESTORE=master BLUESKY=master REPLAY=master DATAPORTAL=v0.1.0 METADATASTORE=v0.1.0
-  - SKXRAY=master SUITCASE=master FILESTORE=master BLUESKY=master REPLAY=master DATAPORTAL=v0.1.0 METADATASTORE=master
-  - SKXRAY=master SUITCASE=master FILESTORE=v0.1.0 BLUESKY=master REPLAY=master DATAPORTAL=master METADATASTORE=v0.1.0
-  - SKXRAY=master SUITCASE=master FILESTORE=v0.1.0 BLUESKY=master REPLAY=master DATAPORTAL=master METADATASTORE=master
-  - SKXRAY=master SUITCASE=master FILESTORE=master BLUESKY=master REPLAY=master DATAPORTAL=master METADATASTORE=v0.1.0
-  - SKXRAY=master SUITCASE=master FILESTORE=master BLUESKY=master REPLAY=master DATAPORTAL=master METADATASTORE=master
+  - DATAPORTAL=v0.1.0 SKXRAY=master METADATASTORE=v0.1.0 FILESTORE=v0.1.0 BLUESKY=v0.1.0 REPLAY=master SUITCASE=master
+  - DATAPORTAL=v0.1.0 SKXRAY=master METADATASTORE=master FILESTORE=v0.1.0 BLUESKY=v0.1.0 REPLAY=master SUITCASE=master
+  - DATAPORTAL=v0.1.0 SKXRAY=master METADATASTORE=v0.1.0 FILESTORE=master BLUESKY=v0.1.0 REPLAY=master SUITCASE=master
+  - DATAPORTAL=v0.1.0 SKXRAY=master METADATASTORE=master FILESTORE=master BLUESKY=v0.1.0 REPLAY=master SUITCASE=master
+  - DATAPORTAL=master SKXRAY=master METADATASTORE=v0.1.0 FILESTORE=v0.1.0 BLUESKY=v0.1.0 REPLAY=master SUITCASE=master
+  - DATAPORTAL=master SKXRAY=master METADATASTORE=master FILESTORE=v0.1.0 BLUESKY=v0.1.0 REPLAY=master SUITCASE=master
+  - DATAPORTAL=master SKXRAY=master METADATASTORE=v0.1.0 FILESTORE=master BLUESKY=v0.1.0 REPLAY=master SUITCASE=master
+  - DATAPORTAL=master SKXRAY=master METADATASTORE=master FILESTORE=master BLUESKY=v0.1.0 REPLAY=master SUITCASE=master
+  - DATAPORTAL=v0.1.0 SKXRAY=master METADATASTORE=v0.1.0 FILESTORE=v0.1.0 BLUESKY=master REPLAY=master SUITCASE=master
+  - DATAPORTAL=v0.1.0 SKXRAY=master METADATASTORE=master FILESTORE=v0.1.0 BLUESKY=master REPLAY=master SUITCASE=master
+  - DATAPORTAL=v0.1.0 SKXRAY=master METADATASTORE=v0.1.0 FILESTORE=master BLUESKY=master REPLAY=master SUITCASE=master
+  - DATAPORTAL=v0.1.0 SKXRAY=master METADATASTORE=master FILESTORE=master BLUESKY=master REPLAY=master SUITCASE=master
+  - DATAPORTAL=master SKXRAY=master METADATASTORE=v0.1.0 FILESTORE=v0.1.0 BLUESKY=master REPLAY=master SUITCASE=master
+  - DATAPORTAL=master SKXRAY=master METADATASTORE=master FILESTORE=v0.1.0 BLUESKY=master REPLAY=master SUITCASE=master
+  - DATAPORTAL=master SKXRAY=master METADATASTORE=v0.1.0 FILESTORE=master BLUESKY=master REPLAY=master SUITCASE=master
+  - DATAPORTAL=master SKXRAY=master METADATASTORE=master FILESTORE=master BLUESKY=master REPLAY=master SUITCASE=master
 ##### end programmatically generated env section #####
 
 before_install:
@@ -71,11 +71,16 @@ install:
 
         conda install --yes -c lightsource2 super_state_machine;
     fi;
-  - cd ..
+g  - cd ..
   ###### start programmatically generated repo clone/install ######
-  - git clone https://github.com/NSLS-II/suitcase
-  - cd suitcase
-  - git checkout $SUITCASE
+  - git clone https://github.com/NSLS-II/dataportal
+  - cd dataportal
+  - git checkout $DATAPORTAL
+  - python setup.py develop
+  - cd ..
+  - git clone https://github.com/NSLS-II/metadatastore
+  - cd metadatastore
+  - git checkout $METADATASTORE
   - python setup.py develop
   - cd ..
   - git clone https://github.com/NSLS-II/filestore
@@ -93,14 +98,9 @@ install:
   - git checkout $REPLAY
   - python setup.py develop
   - cd ..
-  - git clone https://github.com/NSLS-II/dataportal
-  - cd dataportal
-  - git checkout $DATAPORTAL
-  - python setup.py develop
-  - cd ..
-  - git clone https://github.com/NSLS-II/metadatastore
-  - cd metadatastore
-  - git checkout $METADATASTORE
+  - git clone https://github.com/NSLS-II/suitcase
+  - cd suitcase
+  - git checkout $SUITCASE
   - python setup.py develop
   - cd ..
   - git clone https://github.com/scikit-xray/scikit-xray
@@ -109,7 +109,7 @@ install:
   - python setup.py develop
   - cd ..
   ###### stop programmatically generated repo clone/install ######
-
+  - cd vertical-integration
 script:
   - echo "debug info"
   - conda list
