@@ -41,6 +41,7 @@ install:
   - 'pip install prettytable'
   - 'pip install humanize'
   - 'pip install boltons'
+  - pip install super_state_machine
 {clone}
   - 'pip install https://github.com/NSLS-II/channelarchiver/zipball/master#egg=channelarchiver'
 
