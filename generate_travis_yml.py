@@ -44,6 +44,7 @@ install:
   - pip install super_state_machine
 {clone}
   - 'pip install https://github.com/NSLS-II/channelarchiver/zipball/master#egg=channelarchiver'
+  - pip install cycler
 
 script:
 {script}
