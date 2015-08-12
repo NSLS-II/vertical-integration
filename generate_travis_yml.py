@@ -54,6 +54,8 @@ install:
   ###### stop programmatically generated repo clone/install ######
 
 script:
+  - echo "debug info"
+  - conda list
   ##### start programmatically generated test running script #####
 {script}
   ##### stop programmatically generated test running script #####
