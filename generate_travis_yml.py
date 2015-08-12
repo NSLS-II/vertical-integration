@@ -43,6 +43,8 @@ install:
   - conda install --yes -c soft-matter pims tifffile
   - conda install --yes -c nikea mongoengine
   - 'pip install https://github.com/NSLS-II/channelarchiver/zipball/master#egg=channelarchiver'
+  # scikit-xray
+  - conda install --yes -c tacaswell xraylib
   # dataportal
   - pip install humanize boltons
   # metadatastore
@@ -112,14 +114,17 @@ def generate():
     env = '\n'.join(env)
     env = 'env:\n' + env
     script_template = (
-        '  - cd %s\n'
-        '  - python run_tests.py\n'
-        '  - cd ..')
+        '  - cd %s;python run_tests.py;cd ..;')
     script = [script_template % lib for lib in sorted(repo_mapping.keys())
-              if lib not in ['python', 'bluesky']]
+              if lib not in ['python', 'bluesky', 'replay']]
     script.append(
         '  - if [ $TRAVIS_PYTHON_VERSION == "3.4" ]; then\n'
-        '      python bluesky/run_tests.py;'
+        '      cd bluesky;python run_tests.py;cd ..;\n'
+        '    fi;'
+    )
+    script.append(
+        '  - if [ $TRAVIS_PYTHON_VERSION == "2.7" ]; then\n'
+        '      cd replay;python run_tests.py;cd ..;\n'
         '    fi;'
     )
     script = '\n'.join(script)
