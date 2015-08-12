@@ -42,12 +42,16 @@ install:
   - source activate testenv
   - conda install --yes -c soft-matter pims tifffile
   - conda install --yes -c nikea mongoengine
-  - conda install --yes -c lightsource2 epics-base readline super_state_machine lmfit prettytable pcaspy
+  - conda install --yes -c lightsource2 epics-base readline lmfit prettytable pcaspy
   - conda install --yes -c tacaswell cycler xraylib
   - 'pip install https://github.com/NSLS-II/channelarchiver/zipball/master#egg=channelarchiver'
   # scikit-xray
   # dataportal
   - pip install humanize boltons
+  # python 3 deps only
+  - if [ $TRAVIS_PYTHON_VERSION == "3.4" ]; then\n'
+        conda install --yes -c lightsource2 super_state_machine;
+    fi;
   ###### start programmatically generated repo clone/install ######
 {clone}
   ###### stop programmatically generated repo clone/install ######
