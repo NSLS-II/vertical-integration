@@ -109,8 +109,12 @@ def generate():
         '  - python setup.py develop\n'
         '  - cd ..')
     clone = [(clone_template).format(repo_name=repo_name, url=url,
-                                     version=repo_name.upper()) for
-              repo_name, url in repo_mapping.items()]
+                                     version=repo_name.upper())
+              for repo_name, url in repo_mapping.items()
+              if repo_name not in ['python', 'scikit-xray']]
+    clone.append(clone_template.format(repo_name='scikit-xray',
+                                       url=repo_mapping['scikit-xray'],
+                                       version='SKXRAY'))
     clone = '\n'.join(clone)
     yml_file = travis_template.format(matrix=matrix, script=script, clone=clone)
     with open('.travis.yml', 'w') as f:
