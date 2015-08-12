@@ -64,6 +64,8 @@ install:
   - conda install --yes -c tacaswell cycler xraylib
   - 'pip install https://github.com/NSLS-II/channelarchiver/zipball/master#egg=channelarchiver'
   # scikit-xray
+  - conda install --yes netcdf4
+  - conda install --yes -c ericdill pyfai
   # dataportal
   - pip install humanize boltons
   # python 3 deps only
@@ -72,20 +74,15 @@ install:
         conda install --yes -c lightsource2 super_state_machine;
     fi;
   - cd ..
+  # replay
+  - if [ $TRAVIS_PYTHON_VERSION == "2.7" ]; then
+
+        conda install --yes enaml;
+   fi;
   ###### start programmatically generated repo clone/install ######
-  - git clone https://github.com/NSLS-II/dataportal
-  - cd dataportal
-  - git checkout $DATAPORTAL
-  - python setup.py develop
-  - cd ..
   - git clone https://github.com/NSLS-II/bluesky
   - cd bluesky
   - git checkout $BLUESKY
-  - python setup.py develop
-  - cd ..
-  - git clone https://github.com/NSLS-II/replay
-  - cd replay
-  - git checkout $REPLAY
   - python setup.py develop
   - cd ..
   - git clone https://github.com/NSLS-II/suitcase
@@ -93,14 +90,24 @@ install:
   - git checkout $SUITCASE
   - python setup.py develop
   - cd ..
-  - git clone https://github.com/NSLS-II/filestore
-  - cd filestore
-  - git checkout $FILESTORE
+  - git clone https://github.com/NSLS-II/replay
+  - cd replay
+  - git checkout $REPLAY
   - python setup.py develop
   - cd ..
   - git clone https://github.com/NSLS-II/metadatastore
   - cd metadatastore
   - git checkout $METADATASTORE
+  - python setup.py develop
+  - cd ..
+  - git clone https://github.com/NSLS-II/dataportal
+  - cd dataportal
+  - git checkout $DATAPORTAL
+  - python setup.py develop
+  - cd ..
+  - git clone https://github.com/NSLS-II/filestore
+  - cd filestore
+  - git checkout $FILESTORE
   - python setup.py develop
   - cd ..
   - git clone https://github.com/scikit-xray/scikit-xray

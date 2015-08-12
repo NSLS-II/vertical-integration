@@ -46,6 +46,8 @@ install:
   - conda install --yes -c tacaswell cycler xraylib
   - 'pip install https://github.com/NSLS-II/channelarchiver/zipball/master#egg=channelarchiver'
   # scikit-xray
+  - conda install --yes netcdf4
+  - conda install --yes -c ericdill pyfai
   # dataportal
   - pip install humanize boltons
   # python 3 deps only
@@ -53,6 +55,10 @@ install:
         conda install --yes -c lightsource2 super_state_machine;
     fi;
   - cd ..
+  # replay
+  - if [ $TRAVIS_PYTHON_VERSION == "2.7" ]; then\n
+        conda install --yes enaml;
+   fi;
   ###### start programmatically generated repo clone/install ######
 {clone}
   ###### stop programmatically generated repo clone/install ######
