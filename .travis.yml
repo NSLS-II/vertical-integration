@@ -1,0 +1,137 @@
+
+language: python
+sudo: false
+
+services:
+  - mongodb
+
+matrix:
+  -include:
+    - python: 2.7
+      env: SKXRAY=master FILESTORE=v0.1.0 SUITCASE=master METADATASTORE=v0.1.0 BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=v0.1.0
+    - python: 2.7
+      env: SKXRAY=master FILESTORE=v0.1.0 SUITCASE=master METADATASTORE=master BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=v0.1.0
+    - python: 2.7
+      env: SKXRAY=master FILESTORE=master SUITCASE=master METADATASTORE=v0.1.0 BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=v0.1.0
+    - python: 2.7
+      env: SKXRAY=master FILESTORE=master SUITCASE=master METADATASTORE=master BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=v0.1.0
+    - python: 2.7
+      env: SKXRAY=master FILESTORE=v0.1.0 SUITCASE=master METADATASTORE=v0.1.0 BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=master
+    - python: 2.7
+      env: SKXRAY=master FILESTORE=v0.1.0 SUITCASE=master METADATASTORE=master BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=master
+    - python: 2.7
+      env: SKXRAY=master FILESTORE=master SUITCASE=master METADATASTORE=v0.1.0 BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=master
+    - python: 2.7
+      env: SKXRAY=master FILESTORE=master SUITCASE=master METADATASTORE=master BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=master
+    - python: 2.7
+      env: SKXRAY=master FILESTORE=v0.1.0 SUITCASE=master METADATASTORE=v0.1.0 BLUESKY=master REPLAY=master DATAPORTAL=v0.1.0
+    - python: 2.7
+      env: SKXRAY=master FILESTORE=v0.1.0 SUITCASE=master METADATASTORE=master BLUESKY=master REPLAY=master DATAPORTAL=v0.1.0
+    - python: 2.7
+      env: SKXRAY=master FILESTORE=master SUITCASE=master METADATASTORE=v0.1.0 BLUESKY=master REPLAY=master DATAPORTAL=v0.1.0
+    - python: 2.7
+      env: SKXRAY=master FILESTORE=master SUITCASE=master METADATASTORE=master BLUESKY=master REPLAY=master DATAPORTAL=v0.1.0
+    - python: 2.7
+      env: SKXRAY=master FILESTORE=v0.1.0 SUITCASE=master METADATASTORE=v0.1.0 BLUESKY=master REPLAY=master DATAPORTAL=master
+    - python: 2.7
+      env: SKXRAY=master FILESTORE=v0.1.0 SUITCASE=master METADATASTORE=master BLUESKY=master REPLAY=master DATAPORTAL=master
+    - python: 2.7
+      env: SKXRAY=master FILESTORE=master SUITCASE=master METADATASTORE=v0.1.0 BLUESKY=master REPLAY=master DATAPORTAL=master
+    - python: 2.7
+      env: SKXRAY=master FILESTORE=master SUITCASE=master METADATASTORE=master BLUESKY=master REPLAY=master DATAPORTAL=master
+    - python: 3.4
+      env: SKXRAY=master FILESTORE=v0.1.0 SUITCASE=master METADATASTORE=v0.1.0 BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=v0.1.0
+    - python: 3.4
+      env: SKXRAY=master FILESTORE=v0.1.0 SUITCASE=master METADATASTORE=master BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=v0.1.0
+    - python: 3.4
+      env: SKXRAY=master FILESTORE=master SUITCASE=master METADATASTORE=v0.1.0 BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=v0.1.0
+    - python: 3.4
+      env: SKXRAY=master FILESTORE=master SUITCASE=master METADATASTORE=master BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=v0.1.0
+    - python: 3.4
+      env: SKXRAY=master FILESTORE=v0.1.0 SUITCASE=master METADATASTORE=v0.1.0 BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=master
+    - python: 3.4
+      env: SKXRAY=master FILESTORE=v0.1.0 SUITCASE=master METADATASTORE=master BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=master
+    - python: 3.4
+      env: SKXRAY=master FILESTORE=master SUITCASE=master METADATASTORE=v0.1.0 BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=master
+    - python: 3.4
+      env: SKXRAY=master FILESTORE=master SUITCASE=master METADATASTORE=master BLUESKY=v0.1.0 REPLAY=master DATAPORTAL=master
+    - python: 3.4
+      env: SKXRAY=master FILESTORE=v0.1.0 SUITCASE=master METADATASTORE=v0.1.0 BLUESKY=master REPLAY=master DATAPORTAL=v0.1.0
+    - python: 3.4
+      env: SKXRAY=master FILESTORE=v0.1.0 SUITCASE=master METADATASTORE=master BLUESKY=master REPLAY=master DATAPORTAL=v0.1.0
+    - python: 3.4
+      env: SKXRAY=master FILESTORE=master SUITCASE=master METADATASTORE=v0.1.0 BLUESKY=master REPLAY=master DATAPORTAL=v0.1.0
+    - python: 3.4
+      env: SKXRAY=master FILESTORE=master SUITCASE=master METADATASTORE=master BLUESKY=master REPLAY=master DATAPORTAL=v0.1.0
+    - python: 3.4
+      env: SKXRAY=master FILESTORE=v0.1.0 SUITCASE=master METADATASTORE=v0.1.0 BLUESKY=master REPLAY=master DATAPORTAL=master
+    - python: 3.4
+      env: SKXRAY=master FILESTORE=v0.1.0 SUITCASE=master METADATASTORE=master BLUESKY=master REPLAY=master DATAPORTAL=master
+    - python: 3.4
+      env: SKXRAY=master FILESTORE=master SUITCASE=master METADATASTORE=v0.1.0 BLUESKY=master REPLAY=master DATAPORTAL=master
+    - python: 3.4
+      env: SKXRAY=master FILESTORE=master SUITCASE=master METADATASTORE=master BLUESKY=master REPLAY=master DATAPORTAL=master
+
+before_install:
+  - wget http://repo.continuum.io/miniconda/Miniconda3-3.5.5-Linux-x86_64.sh -O miniconda.sh
+  - chmod +x miniconda.sh
+  - ./miniconda.sh -b -p /home/travis/mc
+  - export PATH=/home/travis/mc/bin:$PATH
+  # next 3 lines are needed to spawn a GUI
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 1920x1080x32"
+  # Set up config for MDS
+  - export MDS_HOST=localhost
+  - export MDS_DATABASE=test
+  - export MDS_TIMEZONE=US/Eastern
+  - mkdir -p /home/travis/.config/metadatastore
+  - 'echo ''port: 27017'' > /home/travis/.config/metadatastore/connection.yml'
+  # Set up config for FS
+  - export FS_HOST=localhost
+  - export FS_DATABASE=test
+  - mkdir -p /home/travis/.config/filestore
+  - 'echo ''port: 27017'' > /home/travis/.config/filestore/connection.yml'
+
+install:
+  - export GIT_FULL_HASH=`git rev-parse HEAD`
+  - conda update conda --yes
+  - conda create -n testenv --yes pip nose python=$TRAVIS_PYTHON_VERSION pymongo six pyyaml numpy pandas scikit-image h5py matplotlib coverage jsonschema
+  # Dependencies not in official conda have been uploaded to binstar orgs.
+  - conda install -n testenv --yes -c soft-matter pims tifffile
+  - conda install -n testenv --yes -c nikea mongoengine
+  - source activate testenv
+  - 'pip install coveralls'
+  - pip install codecov
+  - 'pip install prettytable'
+  - 'pip install humanize'
+  - 'pip install boltons'
+  - git clone https://github.com/NSLS-II/suitcase
+  - python suitcase/setup.py develop
+  - git clone https://github.com/scikit-xray/scikit-xray
+  - python scikit-xray/setup.py develop
+  - git clone https://github.com/NSLS-II/filestore
+  - python filestore/setup.py develop
+  - git clone https://github.com/NSLS-II/replay
+  - python replay/setup.py develop
+  - git clone https://github.com/NSLS-II/metadatastore
+  - python metadatastore/setup.py develop
+  - git clone https://github.com/NSLS-II/bluesky
+  - python bluesky/setup.py develop
+  - git clone https://github.com/NSLS-II/dataportal
+  - python dataportal/setup.py develop
+  - 'pip install https://github.com/NSLS-II/channelarchiver/zipball/master#egg=channelarchiver'
+  - python setup.py install
+
+script:
+  - python bluesky/run_tests.py
+  - python dataportal/run_tests.py
+  - python filestore/run_tests.py
+  - python metadatastore/run_tests.py
+  - python suitcase/run_tests.py
+  - python replay/run_tests.py
+  - python scikit-xray/run_tests.py
+
+after_success:
+  coveralls
+  codecov
