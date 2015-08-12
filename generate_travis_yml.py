@@ -5,9 +5,13 @@ sudo: false
 services:
   - mongodb
 
+##### start programmatically generated python section #####
 {python}
+##### end programmatically generated python section #####
 
+##### start programmatically generated env section #####
 {env}
+##### end programmatically generated env section #####
 
 before_install:
   - wget http://repo.continuum.io/miniconda/Miniconda3-3.5.5-Linux-x86_64.sh -O miniconda.sh
@@ -33,24 +37,31 @@ before_install:
 install:
   - export GIT_FULL_HASH=`git rev-parse HEAD`
   - conda update conda --yes
-  - conda create -n testenv --yes pip nose python=$TRAVIS_PYTHON_VERSION pymongo six pyyaml numpy pandas scikit-image h5py matplotlib jsonschema
+  - conda create -n testenv --yes pip nose python=$TRAVIS_PYTHON_VERSION pymongo six pyyaml numpy pandas scikit-image h5py matplotlib jsonschema coverage
   # Dependencies not in official conda have been uploaded to binstar orgs.
-  - conda install -n testenv --yes -c soft-matter pims tifffile
-  - conda install -n testenv --yes -c nikea mongoengine
   - source activate testenv
-  - 'pip install prettytable'
-  - 'pip install humanize'
-  - 'pip install boltons'
-  - pip install super_state_machine
-{clone}
+  - conda install --yes -c soft-matter pims tifffile
+  - conda install --yes -c nikea mongoengine
   - 'pip install https://github.com/NSLS-II/channelarchiver/zipball/master#egg=channelarchiver'
-  - pip install cycler
+  # dataportal
+  - pip install humanize boltons
+  # metadatastore
+  - pip install prettytable
+  # bluesky
+  - pip install cycler super_state_machine lmfit
+  ###### start programmatically generated repo clone/install ######
+{clone}
+  ###### stop programmatically generated repo clone/install ######
 
 script:
+  ##### start programmatically generated test running script #####
 {script}
+  ##### stop programmatically generated test running script #####
 '''
+
 python_versions = ['2.7', '3.4']
 
+# for creating the environmental variable matrix
 versioned_libraries = [
     ('bluesky', ['v0.1.0', 'master']),
     ('dataportal', ['v0.1.0', 'master']),
@@ -61,6 +72,7 @@ versioned_libraries = [
     ('skxray', ['master'])
 ]
 
+# for git cloning
 repo_mapping = {'bluesky': 'https://github.com/NSLS-II/bluesky',
                 'dataportal': 'https://github.com/NSLS-II/dataportal',
                 'filestore': 'https://github.com/NSLS-II/filestore',
