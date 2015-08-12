@@ -71,6 +71,7 @@ install:
 
         conda install --yes -c lightsource2 super_state_machine;
     fi;
+  - cd ..
   ###### start programmatically generated repo clone/install ######
   - git clone https://github.com/NSLS-II/suitcase
   - cd suitcase
