@@ -111,14 +111,17 @@ def generate():
 
     env = '\n'.join(env)
     env = 'env:\n' + env
-    script = ['  - python %s/run_tests.py' % lib[0] for
-              lib in versioned_libraries if lib[0] not in ['python', 'skxray', 'bluesky']]
+    script_template = (
+        '  - cd %s\n'
+        '  - python run_tests.py\n'
+        '  - cd ..')
+    script = [script_template % lib for lib in sorted(repo_mapping.keys())
+              if lib not in ['python', 'bluesky']]
     script.append(
         '  - if [ $TRAVIS_PYTHON_VERSION == "3.4" ]; then\n'
         '      python bluesky/run_tests.py;'
         '    fi;'
     )
-    script.append('  - python scikit-xray/run_tests.py')
     script = '\n'.join(script)
     clone_template = (
         '  - git clone {url}\n'
