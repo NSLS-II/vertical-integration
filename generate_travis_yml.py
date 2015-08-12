@@ -114,17 +114,23 @@ def generate():
     env = '\n'.join(env)
     env = 'env:\n' + env
     script_template = (
-        '  - cd %s;python run_tests.py;cd ..;')
+        '  - cd %s;\n'
+        '  - python run_tests.py;\n'
+        '  - cd ..;')
     script = [script_template % lib for lib in sorted(repo_mapping.keys())
               if lib not in ['python', 'bluesky', 'replay']]
     script.append(
         '  - if [ $TRAVIS_PYTHON_VERSION == "3.4" ]; then\n'
-        '      cd bluesky;python run_tests.py;cd ..;\n'
+        '        cd bluesky;\n'
+        '        python run_tests.py;\n'
+        '        cd ..;\n'
         '    fi;'
     )
     script.append(
         '  - if [ $TRAVIS_PYTHON_VERSION == "2.7" ]; then\n'
-        '      cd replay;python run_tests.py;cd ..;\n'
+        '        cd replay;\n'
+        '        python run_tests.py;\n'
+        '        cd ..;\n'
         '    fi;'
     )
     script = '\n'.join(script)
