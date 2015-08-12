@@ -102,8 +102,14 @@ def generate():
               lib in versioned_libraries if lib[0] not in ['python', 'skxray']]
     script.append('  - python scikit-xray/run_tests.py')
     script = '\n'.join(script)
-    clone = [('  - git clone {url}\n  - cd {repo_name}\n  - python setup.py '
-              'develop\n  - cd ..').format(repo_name=repo_name, url=url) for
+    clone_template = (
+        '  - git clone {url}\n'
+        '  - cd {repo_name}\n'
+        '  - git checkout ${version}\n'
+        '  - python setup.py develop\n'
+        '  - cd ..')
+    clone = [(clone_template).format(repo_name=repo_name, url=url,
+                                     version=repo_name.upper()) for
               repo_name, url in repo_mapping.items()]
     clone = '\n'.join(clone)
     yml_file = travis_template.format(matrix=matrix, script=script, clone=clone)
