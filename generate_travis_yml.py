@@ -52,7 +52,7 @@ install:
   - if [ $TRAVIS_PYTHON_VERSION == "3.4" ]; then\n
         conda install --yes -c lightsource2 super_state_machine;
     fi;
-g  - cd ..
+  - cd ..
   ###### start programmatically generated repo clone/install ######
 {clone}
   ###### stop programmatically generated repo clone/install ######
@@ -110,7 +110,7 @@ def generate():
     envs = nest_all_the_loops(versioned_libraries.copy())
     env = []
     for mat in envs:
-        repos = ' '.join(['%s={%s}' % (k.upper(), k) for k, v in mat.items() if k != 'python'])
+        repos = ' '.join(['%s={%s}' % (k.upper(), k) for k in sorted(mat.keys()) if k != 'python'])
         env.append(('  - %s' % repos).format(**mat))
 
     env = '\n'.join(env)
