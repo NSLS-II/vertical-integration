@@ -5,27 +5,31 @@ sudo: false
 services:
   - mongodb
 
+##### start programmatically generated python section #####
 python:
   - 2.7
   - 3.4
+##### end programmatically generated python section #####
 
+##### start programmatically generated env section #####
 env:
-  - BLUESKY=v0.1.0 METADATASTORE=v0.1.0 FILESTORE=v0.1.0 SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0
-  - BLUESKY=v0.1.0 METADATASTORE=master FILESTORE=v0.1.0 SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0
-  - BLUESKY=v0.1.0 METADATASTORE=v0.1.0 FILESTORE=master SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0
-  - BLUESKY=v0.1.0 METADATASTORE=master FILESTORE=master SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0
-  - BLUESKY=v0.1.0 METADATASTORE=v0.1.0 FILESTORE=v0.1.0 SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=master
-  - BLUESKY=v0.1.0 METADATASTORE=master FILESTORE=v0.1.0 SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=master
-  - BLUESKY=v0.1.0 METADATASTORE=v0.1.0 FILESTORE=master SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=master
-  - BLUESKY=v0.1.0 METADATASTORE=master FILESTORE=master SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=master
-  - BLUESKY=master METADATASTORE=v0.1.0 FILESTORE=v0.1.0 SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0
-  - BLUESKY=master METADATASTORE=master FILESTORE=v0.1.0 SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0
-  - BLUESKY=master METADATASTORE=v0.1.0 FILESTORE=master SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0
-  - BLUESKY=master METADATASTORE=master FILESTORE=master SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0
-  - BLUESKY=master METADATASTORE=v0.1.0 FILESTORE=v0.1.0 SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=master
-  - BLUESKY=master METADATASTORE=master FILESTORE=v0.1.0 SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=master
-  - BLUESKY=master METADATASTORE=v0.1.0 FILESTORE=master SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=master
-  - BLUESKY=master METADATASTORE=master FILESTORE=master SKXRAY=master REPLAY=master SUITCASE=master DATAPORTAL=master
+  - BLUESKY=v0.1.0 SKXRAY=master FILESTORE=v0.1.0 REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0 METADATASTORE=v0.1.0
+  - BLUESKY=v0.1.0 SKXRAY=master FILESTORE=v0.1.0 REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0 METADATASTORE=master
+  - BLUESKY=v0.1.0 SKXRAY=master FILESTORE=master REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0 METADATASTORE=v0.1.0
+  - BLUESKY=v0.1.0 SKXRAY=master FILESTORE=master REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0 METADATASTORE=master
+  - BLUESKY=v0.1.0 SKXRAY=master FILESTORE=v0.1.0 REPLAY=master SUITCASE=master DATAPORTAL=master METADATASTORE=v0.1.0
+  - BLUESKY=v0.1.0 SKXRAY=master FILESTORE=v0.1.0 REPLAY=master SUITCASE=master DATAPORTAL=master METADATASTORE=master
+  - BLUESKY=v0.1.0 SKXRAY=master FILESTORE=master REPLAY=master SUITCASE=master DATAPORTAL=master METADATASTORE=v0.1.0
+  - BLUESKY=v0.1.0 SKXRAY=master FILESTORE=master REPLAY=master SUITCASE=master DATAPORTAL=master METADATASTORE=master
+  - BLUESKY=master SKXRAY=master FILESTORE=v0.1.0 REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0 METADATASTORE=v0.1.0
+  - BLUESKY=master SKXRAY=master FILESTORE=v0.1.0 REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0 METADATASTORE=master
+  - BLUESKY=master SKXRAY=master FILESTORE=master REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0 METADATASTORE=v0.1.0
+  - BLUESKY=master SKXRAY=master FILESTORE=master REPLAY=master SUITCASE=master DATAPORTAL=v0.1.0 METADATASTORE=master
+  - BLUESKY=master SKXRAY=master FILESTORE=v0.1.0 REPLAY=master SUITCASE=master DATAPORTAL=master METADATASTORE=v0.1.0
+  - BLUESKY=master SKXRAY=master FILESTORE=v0.1.0 REPLAY=master SUITCASE=master DATAPORTAL=master METADATASTORE=master
+  - BLUESKY=master SKXRAY=master FILESTORE=master REPLAY=master SUITCASE=master DATAPORTAL=master METADATASTORE=v0.1.0
+  - BLUESKY=master SKXRAY=master FILESTORE=master REPLAY=master SUITCASE=master DATAPORTAL=master METADATASTORE=master
+##### end programmatically generated env section #####
 
 before_install:
   - wget http://repo.continuum.io/miniconda/Miniconda3-3.5.5-Linux-x86_64.sh -O miniconda.sh
@@ -51,23 +55,22 @@ before_install:
 install:
   - export GIT_FULL_HASH=`git rev-parse HEAD`
   - conda update conda --yes
-  - conda create -n testenv --yes pip nose python=$TRAVIS_PYTHON_VERSION pymongo six pyyaml numpy pandas scikit-image h5py matplotlib jsonschema
+  - conda create -n testenv --yes pip nose python=$TRAVIS_PYTHON_VERSION pymongo six pyyaml numpy pandas scikit-image h5py matplotlib jsonschema coverage
   # Dependencies not in official conda have been uploaded to binstar orgs.
-  - conda install -n testenv --yes -c soft-matter pims tifffile
-  - conda install -n testenv --yes -c nikea mongoengine
   - source activate testenv
-  - 'pip install prettytable'
-  - 'pip install humanize'
-  - 'pip install boltons'
-  - pip install super_state_machine
+  - conda install --yes -c soft-matter pims tifffile
+  - conda install --yes -c nikea mongoengine
+  - 'pip install https://github.com/NSLS-II/channelarchiver/zipball/master#egg=channelarchiver'
+  # dataportal
+  - pip install humanize boltons
+  # metadatastore
+  - pip install prettytable
+  # bluesky
+  - pip install cycler super_state_machine lmfit
+  ###### start programmatically generated repo clone/install ######
   - git clone https://github.com/NSLS-II/bluesky
   - cd bluesky
   - git checkout $BLUESKY
-  - python setup.py develop
-  - cd ..
-  - git clone https://github.com/NSLS-II/suitcase
-  - cd suitcase
-  - git checkout $SUITCASE
   - python setup.py develop
   - cd ..
   - git clone https://github.com/NSLS-II/filestore
@@ -80,9 +83,9 @@ install:
   - git checkout $REPLAY
   - python setup.py develop
   - cd ..
-  - git clone https://github.com/NSLS-II/metadatastore
-  - cd metadatastore
-  - git checkout $METADATASTORE
+  - git clone https://github.com/NSLS-II/suitcase
+  - cd suitcase
+  - git checkout $SUITCASE
   - python setup.py develop
   - cd ..
   - git clone https://github.com/NSLS-II/dataportal
@@ -90,15 +93,20 @@ install:
   - git checkout $DATAPORTAL
   - python setup.py develop
   - cd ..
+  - git clone https://github.com/NSLS-II/metadatastore
+  - cd metadatastore
+  - git checkout $METADATASTORE
+  - python setup.py develop
+  - cd ..
   - git clone https://github.com/scikit-xray/scikit-xray
   - cd scikit-xray
   - git checkout $SKXRAY
   - python setup.py develop
   - cd ..
-  - 'pip install https://github.com/NSLS-II/channelarchiver/zipball/master#egg=channelarchiver'
-  - pip install cycler
+  ###### stop programmatically generated repo clone/install ######
 
 script:
+  ##### start programmatically generated test running script #####
   - python dataportal/run_tests.py
   - python filestore/run_tests.py
   - python metadatastore/run_tests.py
@@ -107,3 +115,4 @@ script:
   - if [ $TRAVIS_PYTHON_VERSION == "3.4" ]; then
       python bluesky/run_tests.py;    fi;
   - python scikit-xray/run_tests.py
+  ##### stop programmatically generated test running script #####
