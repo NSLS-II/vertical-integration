@@ -49,7 +49,7 @@ install:
   # dataportal
   - pip install humanize boltons
   # python 3 deps only
-  - if [ $TRAVIS_PYTHON_VERSION == "3.4" ]; then\n'
+  - if [ $TRAVIS_PYTHON_VERSION == "3.4" ]; then\n
         conda install --yes -c lightsource2 super_state_machine;
     fi;
   ###### start programmatically generated repo clone/install ######
