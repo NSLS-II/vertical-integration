@@ -54,7 +54,6 @@ install:
   - if [ $TRAVIS_PYTHON_VERSION == "3.4" ]; then\n
         conda install --yes -c lightsource2 super_state_machine;
     fi;
-  - cd ..
   # replay
   - if [ $TRAVIS_PYTHON_VERSION == "2.7" ]; then\n
         conda install --yes enaml;
@@ -62,7 +61,6 @@ install:
   ###### start programmatically generated repo clone/install ######
 {clone}
   ###### stop programmatically generated repo clone/install ######
-  - cd vertical-integration
 script:
   - echo "debug info"
   - conda list
@@ -152,7 +150,7 @@ def generate():
         '  - cd ..')
     clone = [(clone_template).format(repo_name=repo_name, url=url,
                                      version=repo_name.upper())
-              for repo_name, url in repo_mapping.items()
+              for repo_name, url in sorted(repo_mapping.items(), key=lambda x: x[0])
               if repo_name not in ['python', 'scikit-xray']]
     clone.append(clone_template.format(repo_name='scikit-xray',
                                        url=repo_mapping['scikit-xray'],
