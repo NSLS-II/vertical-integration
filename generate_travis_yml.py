@@ -66,6 +66,8 @@ install:
 script:
   - echo "debug info"
   - conda list
+  - pwd
+  - python -c "import prettytable; prettytable.__file__"
   ##### start programmatically generated test running script #####
 {script}
   ##### stop programmatically generated test running script #####

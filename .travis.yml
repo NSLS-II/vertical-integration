@@ -80,9 +80,9 @@ install:
         conda install --yes enaml;
    fi;
   ###### start programmatically generated repo clone/install ######
-  - git clone https://github.com/NSLS-II/bluesky
-  - cd bluesky
-  - git checkout $BLUESKY
+  - git clone https://github.com/NSLS-II/dataportal
+  - cd dataportal
+  - git checkout $DATAPORTAL
   - python setup.py develop
   - cd ..
   - git clone https://github.com/NSLS-II/suitcase
@@ -90,9 +90,9 @@ install:
   - git checkout $SUITCASE
   - python setup.py develop
   - cd ..
-  - git clone https://github.com/NSLS-II/replay
-  - cd replay
-  - git checkout $REPLAY
+  - git clone https://github.com/NSLS-II/bluesky
+  - cd bluesky
+  - git checkout $BLUESKY
   - python setup.py develop
   - cd ..
   - git clone https://github.com/NSLS-II/metadatastore
@@ -100,14 +100,14 @@ install:
   - git checkout $METADATASTORE
   - python setup.py develop
   - cd ..
-  - git clone https://github.com/NSLS-II/dataportal
-  - cd dataportal
-  - git checkout $DATAPORTAL
-  - python setup.py develop
-  - cd ..
   - git clone https://github.com/NSLS-II/filestore
   - cd filestore
   - git checkout $FILESTORE
+  - python setup.py develop
+  - cd ..
+  - git clone https://github.com/NSLS-II/replay
+  - cd replay
+  - git checkout $REPLAY
   - python setup.py develop
   - cd ..
   - git clone https://github.com/scikit-xray/scikit-xray
@@ -120,6 +120,8 @@ install:
 script:
   - echo "debug info"
   - conda list
+  - pwd
+  - python -c "import prettytable; prettytable.__file__"
   ##### start programmatically generated test running script #####
   - cd dataportal;
   - python run_tests.py;
